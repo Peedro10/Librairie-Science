@@ -27,6 +27,9 @@ Templates utilisés pour gérer l'authentification des utilisateurs, permettant 
 
 <img width="1080" alt="2" src="https://github.com/user-attachments/assets/d9c14a4f-8299-40fa-bb06-24c5bd009255">
 
+<img width="651" alt="10" src="https://github.com/user-attachments/assets/a94585df-8b5f-4d18-9448-ce090373098f">
+
+
 
                                                                           
 
