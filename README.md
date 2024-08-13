@@ -40,23 +40,18 @@ Templates utilisés pour gérer l'authentification des utilisateurs, permettant 
 
                                                                           
 
-
-
-
-
-
        
-Cloner le dépôt : git clone https://github.com/Peedro10/Librairie-Science.git
-1- Créer un environnement virtuel : python -m venv env
-2-Installer les dépendances : pip install -r requirements.txt
-3- Configurer la base de données et appliquer les migrations : python manage.py migrate
-4- Créer un superutilisateur (optionnel) : python manage.py createsuperuser
-5 -Lancer le serveur de développement : python manage.py runserver
-6 -Accéder à l'application : http://localhost:127.0.0.1
-7 -Contribution
-8 -Contributions bienvenues via des issues ou pull requests.
+### Cloner le dépôt : git clone https://github.com/Peedro10/Librairie-Science.git
+### 1- Créer un environnement virtuel : python -m venv env
+### 2-Installer les dépendances : pip install -r requirements.txt
+### 3- Configurer la base de données et appliquer les migrations : python manage.py migrate
+### 4- Créer un superutilisateur (optionnel) : python manage.py createsuperuser
+### 5 -Lancer le serveur de développement : python manage.py runserver
+### 6 -Accéder à l'application : http://localhost:127.0.0.1
+### 7 -Contribution
+### 8 -Contributions bienvenues via des issues ou pull requests.
 
-Remerciements
+### Remerciements
 Merci aux contributeurs et à la communauté open-source.
 
 Bon codage !
