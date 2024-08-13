@@ -1,21 +1,25 @@
 $(document).on('ready', function() {
-	$("body").on("click", "#addTocart", function(event){
-		var id = $(this).attr("data-book-id");
-		event.preventDefault();
-		$.ajax({
-			url : "../cart/add/"+id,
-			data : {bookid:1},
-			success : function(data){
+    $("body").on("click", "#addTocart", function(event){
+        var id = $(this).attr("data-book-id");
+        event.preventDefault();
+        $.ajax({
+            url : "../cart/add/"+id,
+            data : {bookid:1},
+            success : function(data){
+                if (data.is_available) {
+                    $("#snackbar").html("Le livre a été ajouté au panier.");
+                } else {
+                    $("#snackbar").html("Désolé, ce livre n'est pas disponible pour le moment.");
+                }
+                var x = document.getElementById("snackbar");
+                x.className = "show";
+                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+                totalCart();
+            }
+        })
+    });
+});
 
-				$("#snackbar").html("Le livre n'est pas disponible");
-
-				var x = document.getElementById("snackbar");
-				x.className = "show";
-				setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
-				totalCart();
-			}
-		})
-	});
 
 	
 
