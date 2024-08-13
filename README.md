@@ -23,6 +23,8 @@ Affichage des informations sur les écrivains et la liste des livres qu’ils on
 Templates utilisés pour gérer l'authentification des utilisateurs, permettant la connexion (login) et l'inscription (signup) de nouveaux utilisateurs.
                                                                           # ****************************************** #   
 
+<img width="1083" alt="1" src="https://github.com/user-attachments/assets/46b9a041-ebfb-447c-8c9f-07a23ca4820e">
+
 
                                                                           
 
