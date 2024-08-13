@@ -1,0 +1,107 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load customfunction %}
+{% load crispy_forms_tags %}
+
+
+
+{% block container %}
+			<div class="row">
+			    <div class="col-md-8 order-md-1 cart_info">
+			        <h4 class="mb-3 mt-3">adresse de livraison</h4>
+					{% if messages %}
+					<div class="messages">
+					    {% for message in messages %}
+					    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+					    {% endfor %}
+					</div>
+					{% endif %}
+			        <form action="" method="POST" class="needs-validation" novalidate="">
+			        	{% csrf_token %}
+						
+			            <div class="row">
+			                <div class="col-md-6 mb-3">
+			                    {{ form.nom|as_crispy_field }}
+			                </div>
+			                <div class="col-md-6 mb-3">
+			                  
+			                   	{{ form.email|as_crispy_field }}
+			                </div>
+			            </div>
+	           			<div class="mb-3">
+			                {{ form.Telphone|as_crispy_field }}
+			            </div>
+
+			            <div class="mb-3">
+			                {{ form.address|as_crispy_field }}
+			            </div>
+			            <div class="row">
+			                <div class="col-md-5 mb-3">
+								{{ form.region|as_crispy_field }}
+			                </div>
+			                <div class="col-md-4 mb-3">
+								{{ form.ville|as_crispy_field }}
+			                </div>
+			                <div class="col-md-3 mb-3">
+			                	{{ form.zip_code|as_crispy_field }}
+			                </div>
+			            </div>
+			            <hr class="mb-4">
+			            <div class="d-block my-3">
+							{{ form.payment_method|as_crispy_field }}
+			            </div>
+			            <div class="row">
+			                <div class="col-md-6 mb-3">
+			                    {{ form.N_compte|as_crispy_field }}
+			                  
+			                </div>
+			                <div class="col-md-6 mb-3">
+			                    {{ form.transaction_id|as_crispy_field }}
+			                </div>
+
+							<div class="col-md-6 mb-3">
+								<label for="{{ form.date_return.id_for_label }}">Date de retour</label>
+								<input type="date" class="form-control" id="{{ form.date_return.id_for_label }}" name="{{ form.date_return.name }}" value="" readonly />
+							</div>
+							
+							<script>
+								var today = new Date();
+								var returnDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // ajouter 7 jours
+							
+								var dd = returnDate.getDate();
+								var mm = returnDate.getMonth()+1; //Janvier est 0 !
+								var yyyy = returnDate.getFullYear();
+							
+								if(dd<10) {
+									dd='0'+dd;
+								} 
+							
+								if(mm<10) {
+									mm='0'+mm;
+								} 
+							
+								var returnDateFormatted = yyyy+'-'+mm+'-'+dd;
+							
+								document.getElementById("{{ form.date_return.id_for_label }}").value = returnDateFormatted;
+							</script>
+							
+							
+							
+							
+							
+			            </div>
+			            <hr class="mb-4">
+			            <button class="btn btn-warning btn-block" type="submit" style="margin-bottom: 20px">Continuer à payer</button>
+			        </form>
+			    </div>
+			    <div class="col-md-4 order-md-2 mb-4">
+					<ul class="list-group">
+						<li class="list-group-item d-flex justify-content-between align-items-center"><h4>Résumé de la caisse</h4></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Livres<span>{{ cart|length }}</span></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Total<span>{{ cart.get_total_price }} DH</span></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Expédition<span>{{ cost|shipping }} DH</span></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Total à payer<span>{{ cart.get_total_price|payabletotal}} DH</span></li>
+					</ul>
+			    </div>
+			</div>
+		{% endblock %}

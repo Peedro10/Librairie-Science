@@ -1,0 +1,29 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block container %}
+        <div class="row">
+            <div class="col-md-12 cart_info">
+                    <div class="successful-order text-center">
+                        <i class="fa fa-check"></i>
+                        <h3 class="page-header">Merci pour votre achat!</h3>
+                    </div>
+                    <div class="ordered-info">
+                        <h5>Commande-ID: <span>2023-{{ order.id }}</span></h5>
+                        <h5>Livre: <span>{{ order.totalbook }}</span></h5>
+                        <h5>Nom: <span>{{ order.nom }}</span></h5>
+                        <h5>Numéro: <span>{{ order.Telphone }}</span></h5>
+                        <h5>E-mail: <span>{{ order.email }}</span></h5>
+                        <h5>N° Compte: <span>{{ order.N_compte}}</span></h5>
+                        <h5>Mode de Paiement: <span>{{ order.payment_method }}</span></h5>
+                        
+                        <h5>Date return: <span>{{ order.date_return }}</span></h5>
+
+                        <h5>Adresse de Livraison: <span>{{ order.region }}:{{ order.zip_code }}, {{ order.ville }}, {{ order.address }}</span></h5>
+                    </div>
+                    <div class="download-info">
+                        <a href="{% url 'order:pdf' id=order.id %}"><i class="fa fa-download" aria-hidden="true"></i></a>
+                    </div>
+            </div>
+        </div>
+{% endblock %}

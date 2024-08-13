@@ -1,0 +1,8 @@
+{% load customfunction %}
+<ul class="list-group">
+	<li class="list-group-item d-flex justify-content-between align-items-center"><h4>Résumé de la caisse</h4></li>
+	<li class="list-group-item d-flex justify-content-between align-items-center">Livres<span>{{ cart|length }}</span></li>
+	<li class="list-group-item d-flex justify-content-between align-items-center">Total<span>{{ cart.get_total_price }} DH.</span></li>
+	<li class="list-group-item d-flex justify-content-between align-items-center">Expédition<span>{{ cost|shipping }} DH.</span></li>
+	<li class="list-group-item d-flex justify-content-between align-items-center">Payable Total<span>{{ cart.get_total_price|payabletotal}} Dh.</span></li>
+</ul>	

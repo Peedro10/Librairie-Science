@@ -1,0 +1,46 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load customfunction %}
+{% block container %}
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="cart_info">
+					    <table class="table table-hover">
+					        <thead class="text-center">
+					            <tr>
+					                <th scope="col">#</th>
+					                <th scope="col" style="width: 250px">Nom</th>
+					                <th scope="col">Prix</th>
+					                <th scope="col" >Qty</th>
+					                <th scope="col"> Sub-Total</th>
+					            </tr>
+					        </thead>
+					        <tbody class="text-center">
+					        	{% for item in o_item %}
+					            <tr>
+					                <td class="cart_coverpage"><a href=""><img src="{{ item.book.coverpage.url}}"></a></td>
+					                <td><a href="{% url 'store:book' id=item.book.id %}">{{ item.book.name }}</a></td>
+					                <td class="cart_quantity">{{ item.book.price }} DH.</td>
+					                <td class="cart_quantity">{{ item.quantity }}</td>
+					                <td>{{ item.book.price|subtotal:item.quantity }} DH.</td>
+					            </tr>
+					            {% endfor %}
+					        </tbody>
+					    </table>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<ul class="list-group">
+						<li class="list-group-item d-flex justify-content-between align-items-center"><h4>Résumé</h4></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Livres<span>{{ o_summary.totalbook }}</span></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Total<span>{{ o_summary.payable }} DH.</span></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Expédition<span>{{ 25 }} DH.</span></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Payable Total<span>{{ o_summary.payable|add:100 }} DH.</span></li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">Donnée Commande<span>{{ o_summary.created }}</span></li>
+
+						
+
+					</ul>
+				</div>
+			</div>
+		{% endblock %}
